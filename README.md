@@ -241,7 +241,7 @@ cd valorant-sensitivity-generator
 然后使用现代浏览器直接打开：
 
 ```text
-index.html
+index_v0.2.html
 ```
 
 即可运行。
@@ -292,7 +292,7 @@ Canvas
 HTML、CSS 与 JavaScript 集成在：
 
 ```text
-index.html
+index_v0.2.html
 ```
 
 中。
@@ -311,13 +311,13 @@ valorant-sensitivity-generator/
 │   ├── preview-aim-test.png
 │   └── preview-result.png
 │
-├── index.html
+├── index_v0.2.html
 ├── README.md
 ├── LICENSE
 └── NOTICE
 ```
 
-### `index.html`
+### `index_v0.2.html`
 
 灵敏度生成器主体，包括：
 

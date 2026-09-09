@@ -27,6 +27,7 @@
     .result-card{display:none;border-color:rgba(145,255,208,.44)}.result-card.show{display:block}.result-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}.hero-result{padding:28px;background:linear-gradient(145deg,#10252b,#09171c);border:1px solid var(--line)}.hero-result .sens{font-size:clamp(72px,10vw,126px);line-height:.9;letter-spacing:-.075em;font-weight:950;color:var(--mint);margin:16px 0}.hero-result .sens-label{font-size:12px;color:var(--muted);letter-spacing:.12em}.copy-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.copy-note{color:var(--muted);font-size:12px}.confidence{margin-top:22px}.confidence-line{height:7px;background:#26383e;overflow:hidden}.confidence-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--mint));transition:width .6s}.confidence small{display:flex;justify-content:space-between;color:var(--muted);margin-top:7px}
     .result-details{display:grid;grid-template-columns:1fr 1fr;gap:10px}.detail{border:1px solid var(--line);padding:15px;background:#0a171c}.detail span{display:block;color:var(--muted);font-size:11px}.detail strong{display:block;font-size:22px;margin-top:7px}.analysis-box{grid-column:1/-1;border-left:3px solid var(--red);padding:16px;background:rgba(255,70,85,.055);color:#cbd4d6;font-size:13px;line-height:1.7}
     .alternatives{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.alt{padding:15px;border:1px solid var(--line);background:#08151a}.alt.recommended{border-color:var(--mint)}.alt small{color:var(--muted)}.alt strong{display:block;font-size:28px;margin:6px 0}.apply{margin-top:20px;padding:20px;border:1px dashed #53666d}.apply h3{margin:0 0 10px}.apply ol{margin:0;padding-left:20px;color:#b9c6c9;line-height:1.85;font-size:13px}
+    .game-convert{margin-top:18px;padding:18px;border:1px solid var(--line);background:#08151a}.game-convert h3{margin:0 0 12px}.game-table{width:100%;border-collapse:collapse;font-size:13px}.game-table th,.game-table td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}.game-table th{color:var(--muted);font-size:11px;letter-spacing:.04em}.game-table tr.current td{color:var(--mint);font-weight:900}.game-copy{border:1px solid #53666d;background:transparent;color:var(--text);padding:5px 9px;cursor:pointer;font-size:12px;border-radius:4px}.game-copy:hover{border-color:var(--mint);color:var(--mint)}
     footer{padding:18px 0 40px;text-align:center;color:#63777e;font-size:11px;line-height:1.7}.toast{position:fixed;right:24px;bottom:24px;z-index:40;padding:12px 16px;background:var(--mint);color:#061014;font-weight:900;transform:translateY(90px);opacity:0;transition:.25s}.toast.show{transform:none;opacity:1}
     @media(max-width:900px){.hero,.result-grid,.cal-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr 1fr}.lab-layout{grid-template-columns:1fr}.test-menu{display:grid;grid-template-columns:1fr 1fr}.arena-wrap{min-height:280px}.steps{grid-template-columns:1fr 1fr}.hero-copy{min-height:0}}
     @media(max-width:560px){main{width:min(100% - 20px,1260px);padding-top:28px}.topbar{padding:0 12px}.local-pill{display:none}.form-grid,.alternatives{grid-template-columns:1fr}.field.wide{grid-column:span 1}.test-menu{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.arena-wrap{min-height:245px}.hud strong{font-size:14px}.hud div{padding:9px 7px}.hero-copy,.baseline-card,.card{padding:20px}}
@@ -35,18 +36,18 @@
 <body>
   <header class="topbar">
     <div class="brand"><i class="brand-mark"></i><div>VAL <span>//</span> SENS LAB</div></div>
-    <div class="local-pill">本地计算 · 不上传成绩</div>
+    <div class="local-pill">v0.2 · 本地计算 · 不上传成绩</div>
   </header>
   <main>
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Personal aim calibration / 2026</p>
         <h1>找到只属于你的<br><em>战术灵敏度</em></h1>
-        <p class="lead">不是照抄职业选手参数。先读取你的 DPI、握姿、鼠标垫与瞄准习惯，再通过悬停甩枪、微调、追踪和换向测试修正，输出可直接填入《无畏契约》的三位小数灵敏度。</p>
+        <p class="lead">不是照抄职业选手参数。先读取你的 DPI、握姿、鼠标垫与瞄准习惯，再通过悬停甩枪、微调、追踪和换向测试修正，输出可直接填入无畏契约、三角洲行动、CS2、守望先锋、Apex、CF 等游戏的灵敏度。</p>
       </div>
       <aside class="baseline-card">
         <div>
-          <span class="mini-label">当前个人测试基准</span>
+          <span class="mini-label">当前主游戏测试基准</span>
           <div class="big-value" id="baseline-edpi">280 <small>eDPI</small></div>
           <p class="lead" style="font-size:13px">这是测试起点，不是最终答案。完成三项核心测试后会自动修正。</p>
         </div>
@@ -58,17 +59,18 @@
     </section>
 
     <nav class="steps" aria-label="生成流程">
-      <div class="step active"><b>01</b>个人习惯</div><div class="step"><b>02</b>扫幅校准</div><div class="step"><b>03</b>内嵌测试</div><div class="step"><b>04</b>游戏数值</div>
+      <div class="step active"><b>01</b>个人习惯</div><div class="step"><b>02</b>扫幅校准</div><div class="step"><b>03</b>内嵌测试</div><div class="step"><b>04</b>多游戏数值</div>
     </nav>
 
     <section class="card" id="profile">
       <div class="section-head">
         <h2><span class="number">01 //</span>建立你的瞄准档案</h2>
-        <p>请填写鼠标驱动中真实使用的 DPI。当前灵敏度可留空；填写后会作为习惯先验，但不会强行保留。</p>
+        <p>先选择主游戏，再填写鼠标驱动中真实使用的 DPI。当前灵敏度可留空；填写后会作为习惯先验，但不会强行保留。</p>
       </div>
       <div class="form-grid">
+        <div class="field"><label for="game">主游戏</label><select id="game"><option value="valorant" selected>无畏契约 VALORANT</option><option value="deltaforce">三角洲行动 Delta Force</option><option value="cs2">CS2</option><option value="ow2">守望先锋 Overwatch 2</option><option value="apex">Apex 英雄</option><option value="cf">穿越火线 CF</option></select></div>
         <div class="field"><label for="dpi">鼠标 DPI</label><input id="dpi" type="number" min="100" max="32000" step="50" value="800"></div>
-        <div class="field"><label for="current-sens">当前游戏灵敏度（可空）</label><input id="current-sens" type="number" min="0.001" max="10" step="0.001" value="0.350"></div>
+        <div class="field"><label for="current-sens">当前主游戏灵敏度（可空）</label><input id="current-sens" type="number" min="0.001" max="10" step="0.001" value="" placeholder="可空"></div>
         <div class="field"><label for="pad-width">鼠标垫可用宽度 / cm</label><input id="pad-width" type="number" min="15" max="120" step="0.5" value="45"></div>
         <div class="field"><label for="mouse-weight">鼠标重量 / g</label><input id="mouse-weight" type="number" min="35" max="160" step="1" value="63"></div>
         <div class="field"><label for="aim-style">主要发力方式</label><select id="aim-style"><option value="arm">大臂流</option><option value="hybrid" selected>手臂 + 手腕混合</option><option value="wrist">手腕流</option></select></div>
@@ -120,19 +122,19 @@
     <div class="generate-row"><button class="btn" id="generate-btn" disabled>完成 3 项核心测试后生成</button></div>
 
     <section class="card result-card" id="result-card">
-      <div class="section-head"><h2><span class="number">04 //</span>你的专属游戏数值</h2><p>以下“游戏灵敏度”按三位小数输出，可直接粘贴到《无畏契约》设置中的“灵敏度：瞄准”。</p></div>
+      <div class="section-head"><h2><span class="number">04 //</span>你的专属多游戏数值</h2><p>以主游戏推荐值为准，下方表格按同一物理手感（cm/360°）换算到其他游戏。数值按各游戏常用精度输出，可直接输入对应游戏。</p></div>
       <div class="result-grid">
         <div class="hero-result">
-          <span class="sens-label">SENSITIVITY : AIM</span>
-          <div class="sens" id="final-sens">0.350</div>
-          <div class="copy-row"><button class="btn" id="copy-btn">复制游戏灵敏度</button><span class="copy-note" id="rounding-note">已按当前 DPI 换算</span></div>
+          <span class="sens-label" id="sens-label">SENSITIVITY : AIM</span>
+          <div class="sens" id="final-sens">--</div>
+          <div class="copy-row"><button class="btn" id="copy-btn">复制主游戏灵敏度</button><span class="copy-note" id="rounding-note">已按当前 DPI 换算</span></div>
           <div class="confidence"><div class="confidence-line"><i id="confidence-bar"></i></div><small><span>测试可信度</span><b id="confidence-text">--</b></small></div>
         </div>
         <div class="result-details">
-          <div class="detail"><span>实际 eDPI</span><strong id="final-edpi">--</strong></div>
+          <div class="detail"><span>主游戏</span><strong id="final-game">--</strong></div>
+          <div class="detail"><span>主游戏 eDPI</span><strong id="final-edpi">--</strong></div>
           <div class="detail"><span>理论 cm / 360°</span><strong id="final-cm">--</strong></div>
-          <div class="detail"><span>ADS 灵敏度倍率</span><strong>1.000</strong></div>
-          <div class="detail"><span>开镜灵敏度倍率</span><strong>1.000</strong></div>
+          <div class="detail"><span>输出精度</span><strong id="output-precision">--</strong></div>
           <div class="analysis-box" id="analysis-text">完成测试后生成分析。</div>
         </div>
       </div>
@@ -141,10 +143,17 @@
         <div class="alt recommended"><small>平衡型 · 首选</small><strong id="alt-main">--</strong><span class="mini-label">测试综合最优点</span></div>
         <div class="alt"><small>速度型 · 转点优先</small><strong id="alt-high">--</strong><span class="mini-label">推荐值 + 约 5%</span></div>
       </div>
-      <div class="apply"><h3>如何填入游戏</h3><ol><li>打开《无畏契约》→ 设置 → 常规 → 鼠标。</li><li>在“灵敏度：瞄准”中输入上方三位小数；DPI 保持与测试时一致。</li><li>ADS 与开镜倍率先使用 1.000，在训练场各打 3 轮困难机器人后再只做 ±0.005 微调。</li><li>网页结果是个性化起点；不要在一局比赛中频繁更改，至少适应 2–3 天再评价。</li></ol></div>
+      <div class="game-convert">
+        <h3>同手感换算表</h3>
+        <table class="game-table">
+          <thead><tr><th>游戏</th><th>灵敏度</th><th>DPI</th><th>eDPI</th><th>cm / 360°</th><th></th></tr></thead>
+          <tbody id="game-table-body"></tbody>
+        </table>
+      </div>
+      <div class="apply"><h3 id="apply-title">如何填入游戏</h3><ol id="apply-steps"></ol></div>
     </section>
   </main>
-<footer>独立的本地训练与计算工具，不隶属于 Riot Games 或 Aim Lab。VALORANT / 无畏契约相关名称归其权利人所有。 Copyright © 2026 Xie Pengcheng (XPC027).  Open source under the Apache License 2.0</footer>
+<footer>独立的本地训练与计算工具，不隶属于 Riot Games、Aim Lab 或各游戏厂商。VALORANT、Delta Force、CS2、Overwatch、Apex、CF 等名称归各自权利人所有。 Copyright © 2026 Xie Pengcheng (XPC027).  Open source under the Apache License 2.0</footer>
   <div class="toast" id="toast">已复制</div>
   <script>
 (function () {
@@ -162,8 +171,73 @@
     turn: { title: "左右换向", duration: 20 }
   };
 
+  var GAMES = [
+    {
+      id: "valorant", name: "无畏契约 VALORANT", short: "VALORANT", yaw: 0.07,
+      min: 0.001, max: 10, step: 0.001, decimals: 3,
+      sensLabel: "SENSITIVITY : AIM",
+      apply: [
+        "打开《无畏契约》→ 设置 → 常规 → 鼠标。",
+        "在“灵敏度：瞄准”中输入上方三位小数；DPI 保持与测试时一致。",
+        "ADS 与开镜倍率先使用 1.000，训练场适应后再做 ±0.005 微调。"
+      ]
+    },
+    {
+      id: "deltaforce", name: "三角洲行动 Delta Force", short: "Delta Force", yaw: 0.022,
+      min: 0.01, max: 100, step: 0.001, decimals: 3,
+      sensLabel: "MOUSE SENSITIVITY",
+      apply: [
+        "打开《三角洲行动》→ 设置 → 鼠标 / 灵敏度。",
+        "输入上方三位小数；关闭鼠标加速，DPI 保持与测试时一致。",
+        "先确认腰射手感，再单独调各倍镜 / ADS 倍率。"
+      ]
+    },
+    {
+      id: "cs2", name: "CS2", short: "CS2", yaw: 0.022,
+      min: 0.0001, max: 100, step: 0.001, decimals: 3,
+      sensLabel: "MOUSE SENSITIVITY",
+      apply: [
+        "打开 CS2 → 设置 → 键盘 / 鼠标。",
+        "在“鼠标灵敏度”中输入上方三位小数；关闭“鼠标加速”。",
+        "先在创意工坊或官方练枪图打 3 轮机器人，再微调 ±0.01。"
+      ]
+    },
+    {
+      id: "ow2", name: "守望先锋 Overwatch 2", short: "Overwatch 2", yaw: 0.0066,
+      min: 0.01, max: 100, step: 0.01, decimals: 2,
+      sensLabel: "MOUSE SENSITIVITY",
+      apply: [
+        "打开《守望先锋 2》→ 选项 → 控制。",
+        "在“鼠标灵敏度”中输入上方数值；DPI 保持与测试时一致。",
+        "不同英雄可共用腰射灵敏度，开镜英雄再单独调相对开镜灵敏度。"
+      ]
+    },
+    {
+      id: "apex", name: "Apex 英雄", short: "Apex", yaw: 0.022,
+      min: 0.1, max: 20, step: 0.001, decimals: 3,
+      sensLabel: "MOUSE SENSITIVITY",
+      apply: [
+        "打开 Apex 英雄 → 设置 → 鼠标 / 键盘。",
+        "在“鼠标灵敏度”中输入上方三位小数；关闭“鼠标加速”。",
+        "ADS 灵敏度可先设 1.0，手感稳定后再按需调整。"
+      ]
+    },
+    {
+      id: "cf", name: "穿越火线 CF", short: "CF", yaw: 0.022,
+      min: 0.001, max: 100, step: 0.001, decimals: 3,
+      sensLabel: "MOUSE SENSITIVITY",
+      apply: [
+        "打开穿越火线 → 设置 → 鼠标。",
+        "在“鼠标灵敏度”中输入上方三位小数；关闭系统鼠标加速。",
+        "CF 各版本可能略有差异，若手感偏差，先按 ±0.01 微调。"
+      ]
+    }
+  ];
+  var GAME_BY_ID = {};
+  GAMES.forEach(function (g) { GAME_BY_ID[g.id] = g; });
+
   var profileIds = [
-    "dpi", "current-sens", "pad-width", "mouse-weight", "aim-style",
+    "game", "dpi", "current-sens", "pad-width", "mouse-weight", "aim-style",
     "grip", "role", "tendency", "priority", "crosshair-color", "polling"
   ];
   var canvas = $("arena");
@@ -192,6 +266,7 @@
 
   function profile() {
     return {
+      game: $("game").value,
       dpi: clamp(getNumber("dpi", 800), 100, 32000),
       currentSens: getNumber("current-sens", NaN),
       pad: clamp(getNumber("pad-width", 45), 15, 120),
@@ -205,41 +280,50 @@
     };
   }
 
-  function baselineEdpi() {
+  function cm360FromSens(sens, dpi, game) {
+    return 914.4 / (dpi * sens * game.yaw);
+  }
+
+  function gameSensFromCm(cm, dpi, game) {
+    var raw = 914.4 / (dpi * cm * game.yaw);
+    var stepped = Math.round(raw / game.step) * game.step;
+    return clamp(stepped, game.min, game.max);
+  }
+
+  function baselineCm360() {
     var p = profile();
-    var baseByStyle = { arm: 230, hybrid: 280, wrist: 335 };
-    var roleDelta = { duelist: 18, flex: 0, anchor: -12, operator: -24 };
+    var baseByStyle = { arm: 56.8, hybrid: 46.7, wrist: 39.0 };
+    var roleDelta = { duelist: -2.6, flex: 0, anchor: 1.7, operator: 3.5 };
     var gripFactor = { palm: 0.975, claw: 1, finger: 1.035 };
     var tendencyFactor = { balanced: 1, overshoot: 0.92, undershoot: 1.08, shake: 0.94 };
     var base = (baseByStyle[p.style] + roleDelta[p.role]) * gripFactor[p.grip];
     base *= tendencyFactor[p.tendency];
     base *= 1 + (50 - p.priority) * 0.0016;
     base *= 1 + clamp((p.weight - 65) * 0.00055, -0.02, 0.045);
-    if (Number.isFinite(p.currentSens) && p.currentSens >= 0.001 && p.currentSens <= 10) {
-      var current = clamp(p.dpi * p.currentSens, 120, 650);
+    var game = GAME_BY_ID[p.game] || GAME_BY_ID.valorant;
+    if (Number.isFinite(p.currentSens) && p.currentSens >= game.min && p.currentSens <= game.max) {
+      var current = clamp(cm360FromSens(p.currentSens, p.dpi, game), 16, 85);
       base = base * 0.62 + current * 0.38;
     }
-    var padMinimum = 13062.857 / (p.pad * 1.58);
-    base = Math.max(base, padMinimum);
-    return clamp(base, 145, 560);
+    var padMaxCm = p.pad * 1.58;
+    base = Math.min(base, padMaxCm);
+    return clamp(base, 16, 85);
   }
 
-  function gameSensFromEdpi(edpi, dpi) {
-    return clamp(Math.round(edpi / dpi * 1000) / 1000, 0.001, 10);
-  }
-
-  function formatSens(value) {
-    return value.toFixed(3);
+  function formatSens(value, game) {
+    var decimals = (game && game.decimals != null) ? game.decimals : 3;
+    return Number(value).toFixed(decimals);
   }
 
   function updateBaseline() {
     var p = profile();
-    var edpi = baselineEdpi();
-    var sens = gameSensFromEdpi(edpi, p.dpi);
-    var actual = p.dpi * sens;
-    $("baseline-edpi").innerHTML = Math.round(actual) + " <small>eDPI</small>";
-    $("baseline-sens").textContent = formatSens(sens);
-    $("baseline-cm").textContent = (13062.857 / actual).toFixed(1) + " cm";
+    var game = GAME_BY_ID[p.game] || GAME_BY_ID.valorant;
+    var cm = baselineCm360();
+    var sens = gameSensFromCm(cm, p.dpi, game);
+    var actualEdpi = p.dpi * sens;
+    $("baseline-edpi").innerHTML = Math.round(actualEdpi) + " <small>" + game.short + " eDPI</small>";
+    $("baseline-sens").textContent = formatSens(sens, game);
+    $("baseline-cm").textContent = cm.toFixed(1) + " cm";
     $("priority-out").textContent = Math.round(p.priority);
   }
 
@@ -261,12 +345,23 @@
     } catch (e) {}
   }
 
+  function syncGameInputs() {
+    var game = GAME_BY_ID[$("game").value] || GAME_BY_ID.valorant;
+    var input = $("current-sens");
+    input.min = game.min;
+    input.max = game.max;
+    input.step = game.step;
+    input.placeholder = "可空，当前 " + game.short + " 灵敏度";
+  }
+
   profileIds.forEach(function (id) {
     $(id).addEventListener("input", function () {
+      if (id === "game") syncGameInputs();
       updateBaseline();
       saveProfile();
     });
     $(id).addEventListener("change", function () {
+      if (id === "game") syncGameInputs();
       updateBaseline();
       saveProfile();
     });
@@ -291,8 +386,7 @@
 
   function simulationGain() {
     var p = profile();
-    var edpi = baselineEdpi();
-    var cm360 = 13062.857 / edpi;
+    var cm360 = baselineCm360();
     var counts = state.countsPerCm || p.dpi / 2.54;
     var degreesPerCount = (360 / cm360) / Math.max(1, counts);
     return clamp(degreesPerCount * (state.cssW / 103), 0.035, 2.8);
@@ -713,7 +807,8 @@
 
   function deriveRecommendation() {
     var p = profile();
-    var base = baselineEdpi();
+    var game = GAME_BY_ID[p.game] || GAME_BY_ID.valorant;
+    var baseCm = baselineCm360();
     var weighted = 0;
     var weights = 0;
     var notes = [];
@@ -756,10 +851,9 @@
     }
 
     var adjustment = clamp(weights ? weighted / weights : 0, -0.12, 0.12);
-    var targetEdpi = base * (1 + adjustment);
-    var padMinimum = 13062.857 / (p.pad * 1.58);
-    targetEdpi = clamp(Math.max(targetEdpi, padMinimum), 145, 560);
-    var sens = gameSensFromEdpi(targetEdpi, p.dpi);
+    var targetCm = clamp(Math.min(baseCm / (1 + adjustment), p.pad * 1.58), 16, 85);
+    var sens = gameSensFromCm(targetCm, p.dpi, game);
+    var actualCm = cm360FromSens(sens, p.dpi, game);
     var actualEdpi = p.dpi * sens;
     var confidence = 48;
     ["flick", "micro", "tracking"].forEach(function (k) { if (state.results[k]) confidence += 12; });
@@ -769,23 +863,56 @@
     return {
       sens: sens,
       actualEdpi: actualEdpi,
-      targetEdpi: targetEdpi,
-      cm: 13062.857 / actualEdpi,
+      targetCm: targetCm,
+      cm: actualCm,
       adjustment: adjustment,
       confidence: confidence,
-      notes: notes
+      notes: notes,
+      game: game
     };
+  }
+
+  function renderGameTable(r, p) {
+    var body = $("game-table-body");
+    body.innerHTML = "";
+    GAMES.forEach(function (g) {
+      var sens = gameSensFromCm(r.cm, p.dpi, g);
+      var edpi = p.dpi * sens;
+      var cm = cm360FromSens(sens, p.dpi, g);
+      var tr = document.createElement("tr");
+      if (g.id === p.game) tr.className = "current";
+      tr.innerHTML = "<td>" + g.name + "</td><td>" + formatSens(sens, g) + "</td><td>" + Math.round(p.dpi) + "</td><td>" + Math.round(edpi) + "</td><td>" + cm.toFixed(1) + "</td><td><button class=\"game-copy\" data-sens=\"" + formatSens(sens, g) + "\">复制</button></td>";
+      body.appendChild(tr);
+    });
+  }
+
+  function renderApply(game) {
+    $("apply-title").textContent = "如何填入 " + game.name;
+    var ol = $("apply-steps");
+    ol.innerHTML = "";
+    game.apply.forEach(function (text) {
+      var li = document.createElement("li");
+      li.textContent = text;
+      ol.appendChild(li);
+    });
+    var general = document.createElement("li");
+    general.textContent = "其余游戏看“同手感换算表”，用同一套 DPI 和对应灵敏度；至少适应 2–3 天再评价。";
+    ol.appendChild(general);
   }
 
   function generateResult() {
     var r = deriveRecommendation();
     var p = profile();
-    $("final-sens").textContent = formatSens(r.sens);
+    var game = r.game;
+    $("sens-label").textContent = game.sensLabel + " · " + game.short;
+    $("final-sens").textContent = formatSens(r.sens, game);
+    $("final-game").textContent = game.name;
     $("final-edpi").textContent = Math.round(r.actualEdpi);
     $("final-cm").textContent = r.cm.toFixed(1) + " cm";
-    $("alt-main").textContent = formatSens(r.sens);
-    $("alt-low").textContent = formatSens(gameSensFromEdpi(r.actualEdpi * 0.95, p.dpi));
-    $("alt-high").textContent = formatSens(gameSensFromEdpi(r.actualEdpi * 1.05, p.dpi));
+    $("output-precision").textContent = (game.decimals || 3) + " 位小数";
+    $("alt-main").textContent = formatSens(r.sens, game);
+    $("alt-low").textContent = formatSens(gameSensFromCm(r.cm * 1.05, p.dpi, game), game);
+    $("alt-high").textContent = formatSens(gameSensFromCm(r.cm * 0.95, p.dpi, game), game);
     $("confidence-text").textContent = r.confidence + "%";
     $("confidence-bar").style.width = r.confidence + "%";
     var direction;
@@ -793,17 +920,19 @@
     else if (r.adjustment > 0.025) direction = "测试显示大范围到达速度偏慢且路径仍稳定，因此在个人基准上略微提高灵敏度。";
     else direction = "速度与控制没有明显冲突，最终值保持在个人基准附近。";
     $("analysis-text").textContent = direction + " 依据：" + r.notes.join("；") + "。算法最大只修正基准的 ±12%，避免单次状态造成极端结果。";
-    var roundingError = Math.abs(r.actualEdpi - r.targetEdpi) / r.targetEdpi;
+    var roundingError = Math.abs(r.cm - r.targetCm) / r.targetCm;
     $("rounding-note").textContent = roundingError > 0.018
-      ? "受三位小数取整影响较大，可考虑降低 DPI 后重测"
-      : "已按 " + Math.round(p.dpi) + " DPI 与三位小数取整";
+      ? "受小数取整影响较大，可考虑降低 DPI 后重测"
+      : "已按 " + Math.round(p.dpi) + " DPI 与 " + (game.decimals || 3) + " 位小数取整";
+    renderGameTable(r, p);
+    renderApply(game);
     $("result-card").classList.add("show");
     $("result-card").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   $("generate-btn").addEventListener("click", generateResult);
-  $("copy-btn").addEventListener("click", function () {
-    var value = $("final-sens").textContent;
+
+  function copyText(value, message) {
     var fallback = function () {
       var input = document.createElement("input");
       input.value = value;
@@ -811,13 +940,25 @@
       input.select();
       try { document.execCommand("copy"); } catch (e) {}
       input.remove();
-      showToast("已复制 " + value);
+      showToast(message || ("已复制 " + value));
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(value).then(function () {
-        showToast("已复制 " + value);
+        showToast(message || ("已复制 " + value));
       }).catch(fallback);
     } else fallback();
+  }
+
+  $("copy-btn").addEventListener("click", function () {
+    var p = profile();
+    var game = GAME_BY_ID[p.game] || GAME_BY_ID.valorant;
+    copyText($("final-sens").textContent, "已复制 " + game.name + " 灵敏度 " + $("final-sens").textContent);
+  });
+
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest && event.target.closest(".game-copy");
+    if (!button) return;
+    copyText(button.getAttribute("data-sens"), "已复制 " + button.getAttribute("data-sens"));
   });
 
   function showToast(text) {
@@ -835,6 +976,7 @@
   });
 
   loadProfile();
+  syncGameInputs();
   updateBaseline();
   updateGenerateButton();
   resizeCanvas();
