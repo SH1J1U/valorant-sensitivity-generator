@@ -8,9 +8,9 @@
 
 **Find the sensitivity that fits you — not everyone else.**
 
-[🎮 在线体验 / Live Demo](https://xpc027.github.io/valorant-sensitivity-generator/) ·
-[💻 Source Code](https://github.com/XPC027/valorant-sensitivity-generator) ·
-[🐛 Report Bug](https://github.com/XPC027/valorant-sensitivity-generator/issues)
+[🎮 在线体验 / Live Demo](https://sh1j1u.github.io/valorant-sensitivity-generator/) ·
+[💻 Source Code](https://github.com/SH1J1U/valorant-sensitivity-generator) ·
+[🐛 Report Bug](https://github.com/SH1J1U/valorant-sensitivity-generator/issues)
 
 </div>
 
@@ -20,7 +20,7 @@
 
 无需安装任何软件，直接打开网页即可使用：
 
-### 👉 https://xpc027.github.io/valorant-sensitivity-generator/
+### 👉 https://sh1j1u.github.io/valorant-sensitivity-generator/
 
 推荐使用电脑端现代浏览器，并使用平时玩 VALORANT 时的鼠标、DPI 和桌面环境进行测试。
 
@@ -31,7 +31,7 @@
 ### 🏠 Personalized Calibration / 个性化瞄准档案
 
 <div align="center">
-  <a href="https://xpc027.github.io/valorant-sensitivity-generator/">
+  <a href="https://sh1j1u.github.io/valorant-sensitivity-generator/">
     <img src="assets/preview-home.png"
          alt="VALORANT Personalized Sensitivity Generator"
          width="100%">
@@ -218,7 +218,7 @@ Lower Sensitivity
 
 直接访问：
 
-https://xpc027.github.io/valorant-sensitivity-generator/
+https://sh1j1u.github.io/valorant-sensitivity-generator/
 
 按照页面提示填写参数并完成测试即可。
 
@@ -311,12 +311,18 @@ valorant-sensitivity-generator/
 │   ├── preview-aim-test.png
 │   └── preview-result.png
 │
+├── index.html
 ├── index_v0.3.html
 ├── index_v0.2.html
+├── 0911_多游戏灵敏度生成器_v0.3.md
 ├── README.md
 ├── LICENSE
 └── NOTICE
 ```
+
+### `index.html`
+
+GitHub Pages 入口。自动跳转到 `index_v0.3.html`，所以线上地址可以直接用仓库主页。
 
 ### `index_v0.3.html`
 
@@ -344,6 +350,10 @@ Test Logic
 Sensitivity Calculation
 Result Display
 ```
+
+### `0911_多游戏灵敏度生成器_v0.3.md`
+
+v0.3 使用说明：本次动画与手感反馈的完整清单、使用步骤和应用方法。
 
 ### `assets/`
 
@@ -399,7 +409,7 @@ Apache License 2.0 完整许可证。
 
 ### Issues
 
-https://github.com/XPC027/valorant-sensitivity-generator/issues
+https://github.com/SH1J1U/valorant-sensitivity-generator/issues
 
 ---
 
@@ -509,11 +519,11 @@ https://github.com/XPC027/valorant-sensitivity-generator
 
 Repository:
 
-https://github.com/XPC027/valorant-sensitivity-generator
+https://github.com/SH1J1U/valorant-sensitivity-generator
 
 Live Demo:
 
-https://xpc027.github.io/valorant-sensitivity-generator/
+https://sh1j1u.github.io/valorant-sensitivity-generator/
 
 你的 Star、Issue、建议与 Pull Request 都会帮助项目继续完善。
 
@@ -549,7 +559,7 @@ The project runs directly in a modern web browser and does not require additiona
 
 **Original Author: Xie Pengcheng (XPC027)**
 
-[🎮 Live Demo](https://xpc027.github.io/valorant-sensitivity-generator/) ·
-[⭐ GitHub](https://github.com/XPC027/valorant-sensitivity-generator)
+[🎮 Live Demo](https://sh1j1u.github.io/valorant-sensitivity-generator/) ·
+[⭐ GitHub](https://github.com/SH1J1U/valorant-sensitivity-generator)
 
 </div>
