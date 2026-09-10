@@ -229,7 +229,7 @@ https://xpc027.github.io/valorant-sensitivity-generator/
 Clone 项目：
 
 ```bash
-git clone https://github.com/XPC027/valorant-sensitivity-generator.git
+git clone https://github.com/SH1J1U/valorant-sensitivity-generator.git
 ```
 
 进入项目目录：
@@ -241,7 +241,7 @@ cd valorant-sensitivity-generator
 然后使用现代浏览器直接打开：
 
 ```text
-index_v0.2.html
+index_v0.3.html
 ```
 
 即可运行。
@@ -292,7 +292,7 @@ Canvas
 HTML、CSS 与 JavaScript 集成在：
 
 ```text
-index_v0.2.html
+index_v0.3.html
 ```
 
 中。
@@ -311,13 +311,29 @@ valorant-sensitivity-generator/
 │   ├── preview-aim-test.png
 │   └── preview-result.png
 │
+├── index_v0.3.html
 ├── index_v0.2.html
 ├── README.md
 ├── LICENSE
 └── NOTICE
 ```
 
+### `index_v0.3.html`
+
+当前版本。在 v0.2 的多游戏换算基础上，补全了瞄准测试的手感反馈与界面动效：
+
+```text
+命中扩散环 + 碎片粒子 + 得分飘字
+目标弹入动画 / 追踪拖尾
+准星速度拉伸 + 命中回弹
+倒计时数字弹跳 + 进度条 / 最后 5 秒红色脉冲
+首屏与卡片进场 / 结果页数字滚动 / 换算表逐行滑入
+prefers-reduced-motion 自动降级
+```
+
 ### `index_v0.2.html`
+
+上一版，保留用于对比。没有动效，换算逻辑与 v0.3 一致。
 
 灵敏度生成器主体，包括：
 
@@ -398,6 +414,8 @@ https://github.com/XPC027
 Original Project:
 
 https://github.com/XPC027/valorant-sensitivity-generator
+
+本仓库（https://github.com/SH1J1U/valorant-sensitivity-generator）由 **SH1J1U** 维护，是在原作者版本基础上衍生的**多游戏换算 + 动效改版**。原作者署名、Apache License 2.0 许可与 NOTICE 信息均完整保留。
 
 如果你 Fork、修改、分发或基于本项目创建衍生版本，请按照 Apache License 2.0 的相关要求保留适用的版权、许可证和 Attribution / NOTICE 信息。
 
